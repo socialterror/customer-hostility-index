@@ -1,0 +1,68 @@
+{
+  "communication_services": {
+    "start": 1,
+    "end": 9,
+    "companies": 9,
+    "filings": 45
+  },
+  "consumer_discretionary": {
+    "start": 10,
+    "end": 35,
+    "companies": 26,
+    "filings": 130
+  },
+  "consumer_staples": {
+    "start": 36,
+    "end": 51,
+    "companies": 16,
+    "filings": 80
+  },
+  "energy": {
+    "start": 52,
+    "end": 62,
+    "companies": 11,
+    "filings": 55
+  },
+  "financials": {
+    "start": 63,
+    "end": 98,
+    "companies": 36,
+    "filings": 180
+  },
+  "health_care": {
+    "start": 99,
+    "end": 126,
+    "companies": 28,
+    "filings": 140
+  },
+  "industrials": {
+    "start": 127,
+    "end": 156,
+    "companies": 30,
+    "filings": 150
+  },
+  "information_technology": {
+    "start": 157,
+    "end": 184,
+    "companies": 28,
+    "filings": 140
+  },
+  "materials": {
+    "start": 185,
+    "end": 197,
+    "companies": 13,
+    "filings": 65
+  },
+  "real_estate": {
+    "start": 198,
+    "end": 213,
+    "companies": 16,
+    "filings": 80
+  },
+  "utilities": {
+    "start": 214,
+    "end": 225,
+    "companies": 12,
+    "filings": 60
+  }
+}
