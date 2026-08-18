@@ -1,5 +1,5 @@
 name: H06 Blind T0 Evidence Packets
-# trigger: 2026-08-18
+# diagnostic-safe wrapper 2026-08-18
 on:
   push:
     branches: [h06-manifest-verification-temp]
@@ -17,11 +17,24 @@ jobs:
         with:
           python-version: '3.12'
       - name: Build blind evidence packets from frozen SEC manifest
-        run: python h06_temp/build_t0_packets.py
-      - name: Commit packets to isolated branch
+        id: build
+        shell: bash
+        run: |
+          set +e
+          python h06_temp/build_t0_packets.py > h06_temp/t0_packets/build_stdout_batch02.txt 2> h06_temp/t0_packets/build_stderr_batch02.txt
+          status=$?
+          echo "$status" > h06_temp/t0_packets/build_exit_code_batch02.txt
+          exit 0
+      - name: Commit packets and diagnostics to isolated branch
+        shell: bash
         run: |
           git config user.name "h06-t0-bot"
           git config user.email "actions@users.noreply.github.com"
           git add h06_temp/t0_packets
-          git diff --cached --quiet || git commit -m "Generate H06 blind T0 evidence packets"
+          git diff --cached --quiet || git commit -m "Generate H06 batch02 blind T0 evidence packets"
           git push
+          status=$(cat h06_temp/t0_packets/build_exit_code_batch02.txt)
+          if [ "$status" != "0" ]; then
+            echo "Batch02 build failed with exit code $status"
+            exit "$status"
+          fi
