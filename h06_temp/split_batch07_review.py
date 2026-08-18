@@ -5,4 +5,4 @@ rows=list(csv.DictReader(src.open(encoding='utf-8'),delimiter='\t'))
 for r in rows:
     p=out/f"{int(r['order']):03d}_{r['ticker']}.md"
     p.write_text(f"# {int(r['order']):03d} {r['ticker']}\n\n## F1\n{r['F1_best']}\n\n## F5\n{r['F5_best']}\n\n## MID\n{r['mid_best']}\n",encoding='utf-8')
-print(len(rows))
+print('split',len(rows))
