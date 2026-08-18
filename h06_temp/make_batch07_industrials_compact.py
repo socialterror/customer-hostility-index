@@ -26,3 +26,4 @@ for order in range(MIN_ORDER,MAX_ORDER+1):
 with (OUT/'batch07_industrials_compact.tsv').open('w',newline='',encoding='utf-8') as f:
     w=csv.writer(f,delimiter='\t'); w.writerow(['order','ticker','F1_best','F5_best','mid_best']); w.writerows(rows)
 print(len(rows))
+# retrigger after workflow registration
