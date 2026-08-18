@@ -1,0 +1,36 @@
+name: H06 Batch03 Consumer Staples Hard Review
+on:
+  push:
+    branches: [h06-manifest-verification-temp]
+    paths:
+      - '.github/workflows/h06-batch03-hard-review.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Wait for Batch03 digests
+        run: |
+          for i in {1..30}; do
+            if [ -f h06_temp/t0_digests/051_TGT.md ]; then exit 0; fi
+            git pull --rebase origin h06-manifest-verification-temp || true
+            sleep 5
+          done
+          test -f h06_temp/t0_digests/051_TGT.md
+      - name: Build explicit mechanism reviews orders 36-51
+        run: |
+          cp h06_temp/make_t0_hard_signal_review.py /tmp/hard03.py
+          sed -i 's/range(10,36)/range(36,52)/' /tmp/hard03.py
+          sed -i "s#ROOT=pathlib.Path(__file__).resolve().parent#ROOT=pathlib.Path('$GITHUB_WORKSPACE/h06_temp')#" /tmp/hard03.py
+          python /tmp/hard03.py
+      - name: Commit reviews
+        run: |
+          git config user.name "h06-t0-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add h06_temp/t0_review/0{36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51}_*_hard.md 2>/dev/null || git add h06_temp/t0_review
+          git diff --cached --quiet || git commit -m "Build H06 Batch03 Consumer Staples explicit reviews"
+          git push
