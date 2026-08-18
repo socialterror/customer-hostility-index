@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/runner/work/customer-hostility-index/customer-hostility-index/h06_temp/build_t0_packets.py", line 70, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/home/runner/work/customer-hostility-index/customer-hostility-index/h06_temp/build_t0_packets.py", line 56, in main
+    if not doc: raise RuntimeError(f'{ticker} {acc}: primary document not in SEC recent submissions metadata')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: DIS 0001744489-19-000225: primary document not in SEC recent submissions metadata
