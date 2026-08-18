@@ -1,0 +1,24 @@
+name: H06 Batch05 Financials Mechanism Matrix
+on:
+  push:
+    branches: [h06-manifest-verification-temp]
+    paths:
+      - 'h06_temp/make_batch05_financials_matrix.py'
+      - '.github/workflows/h06-batch05-financials-matrix.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python h06_temp/make_batch05_financials_matrix.py
+      - run: |
+          git config user.name "h06-t0-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add h06_temp/t0_review/batch05_financials_matrix.md
+          git diff --cached --quiet || git commit -m "Build H06 Financials customer-mechanism matrix"
+          git pull --rebase origin h06-manifest-verification-temp
+          git push
