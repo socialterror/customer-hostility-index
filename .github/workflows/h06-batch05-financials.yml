@@ -1,0 +1,36 @@
+name: H06 Batch05 Financials Blind Packets and Hard Review
+on:
+  push:
+    branches: [h06-manifest-verification-temp]
+    paths:
+      - '.github/workflows/h06-batch05-financials.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Build exact frozen packets orders 63-98
+        run: |
+          cp h06_temp/build_t0_packets.py /tmp/batch05.py
+          sed -i 's/MIN_ORDER=10/MIN_ORDER=63/' /tmp/batch05.py
+          sed -i 's/MAX_ORDER=35/MAX_ORDER=98/' /tmp/batch05.py
+          sed -i 's/packet_summary_batch02.csv/packet_summary_batch05.csv/' /tmp/batch05.py
+          sed -i "s#ROOT=pathlib.Path(__file__).resolve().parent#ROOT=pathlib.Path('$GITHUB_WORKSPACE/h06_temp')#" /tmp/batch05.py
+          python /tmp/batch05.py
+      - name: Build explicit mechanism reviews
+        run: |
+          cp h06_temp/make_batch03_hard_review.py /tmp/hard05.py
+          sed -i 's/range(36,52)/range(63,99)/' /tmp/hard05.py
+          sed -i "s#ROOT=pathlib.Path(__file__).resolve().parent#ROOT=pathlib.Path('$GITHUB_WORKSPACE/h06_temp')#" /tmp/hard05.py
+          python /tmp/hard05.py
+      - name: Commit outputs
+        run: |
+          git config user.name "h06-t0-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add h06_temp/t0_packets h06_temp/t0_review
+          git diff --cached --quiet || git commit -m "Generate H06 Batch05 Financials blind evidence"
+          git push
