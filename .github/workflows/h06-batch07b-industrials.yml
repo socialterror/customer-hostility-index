@@ -27,3 +27,4 @@ jobs:
           git diff --cached --quiet || git commit -m "Generate H06 Industrials blind evidence 142-156"
           git pull --rebase origin h06-manifest-verification-temp
           git push
+# retrigger
