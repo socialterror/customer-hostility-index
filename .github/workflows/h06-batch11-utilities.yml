@@ -1,0 +1,29 @@
+name: H06 Batch11 Utilities Blind Evidence
+on:
+  push:
+    branches: [h06-manifest-verification-temp]
+    paths:
+      - '.github/workflows/h06-batch11-utilities.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: |
+          cp h06_temp/build_t0_packets.py /tmp/b11.py
+          sed -i 's/MIN_ORDER=10/MIN_ORDER=214/' /tmp/b11.py
+          sed -i 's/MAX_ORDER=35/MAX_ORDER=225/' /tmp/b11.py
+          sed -i 's/packet_summary_batch02.csv/packet_summary_batch11.csv/' /tmp/b11.py
+          sed -i "s#ROOT=pathlib.Path(__file__).resolve().parent#ROOT=pathlib.Path('$GITHUB_WORKSPACE/h06_temp')#" /tmp/b11.py
+          python /tmp/b11.py
+      - run: |
+          git config user.name "h06-t0-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add h06_temp/t0_packets h06_temp/t0_packets/packet_summary_batch11.csv
+          git diff --cached --quiet || git commit -m "Generate H06 Utilities blind evidence"
+          git pull --rebase origin h06-manifest-verification-temp
+          git push
