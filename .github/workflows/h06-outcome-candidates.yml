@@ -1,0 +1,24 @@
+name: H06 Blinded Outcome Candidate Harvest
+on:
+  pull_request:
+    branches: [h06-runner-base]
+    paths:
+      - 'h06_temp/build_outcome_candidates.py'
+      - '.github/workflows/h06-outcome-candidates.yml'
+permissions:
+  contents: read
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Build blinded candidate packets
+        run: python h06_temp/build_outcome_candidates.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: h06-outcome-candidates
+          path: h06_temp/outcome_audit
+          retention-days: 30
