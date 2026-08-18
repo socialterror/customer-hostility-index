@@ -36,3 +36,4 @@ jobs:
       - name: Enforce retrieval gates
         if: steps.packets.outcome != 'success' || steps.digest.outcome != 'success'
         run: exit 1
+# batch02 trigger: sample orders 10-35
