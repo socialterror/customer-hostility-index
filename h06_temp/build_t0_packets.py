@@ -4,7 +4,8 @@ ROOT=pathlib.Path(__file__).resolve().parent
 OUT=ROOT/'t0_packets'; OUT.mkdir(exist_ok=True)
 MAN=ROOT/'output'/'H06_SAMPLE_MANIFEST_FROZEN.csv'
 UA='Customer Hostility Index academic research contact: jared.longhitano@gmail.com'
-MAX_ORDER=9
+MIN_ORDER=10
+MAX_ORDER=35
 KEYS={
 'SP001':['unauthorized','unlicensed','sharing','shared account','password sharing','entitlement','piracy','free user','non-paying','nonpaying','convert','conversion','monetize','monetization','access'],
 'SP002':['price','pricing','rate','fee','fees','average revenue','arpu','upsell','cross-sell','premium','tier','package','packaging','bundle','subscription','yield','revenue per','lifetime value','spend per','attach rate','plan mix'],
@@ -24,9 +25,6 @@ def primary_map(cik):
     url=f'https://data.sec.gov/submissions/CIK{str(cik).zfill(10)}.json'
     data=json.loads(get_bytes(url).decode('utf-8'))
     out={}; add_records(out,data['filings']['recent'])
-    # Older frozen accessions may have aged out of `recent`. SEC lists archived
-    # submissions JSON files under filings.files; load only metadata, never later
-    # company/news/outcome material.
     for meta in data.get('filings',{}).get('files',[]):
         name=meta.get('name')
         if not name: continue
@@ -56,7 +54,7 @@ def main():
     rows=list(csv.DictReader(MAN.open())); by=defaultdict(list)
     for r in rows:
         o=int(r['sample_order'])
-        if o<=MAX_ORDER: by[o].append(r)
+        if MIN_ORDER<=o<=MAX_ORDER: by[o].append(r)
     summary=[]
     for order in sorted(by):
         rs=sorted(by[order],key=lambda x:x['filing_position']); ticker=rs[0]['ticker']; cik=rs[0]['CIK']; pmap=primary_map(cik)
@@ -74,7 +72,7 @@ def main():
                 packet.append(''); total+=len(hits)
             summary.append({'sample_order':order,'ticker':ticker,'filing_position':r['filing_position'],'accession':acc,'primary_document':doc,'candidate_passages':total}); time.sleep(.12)
         (OUT/f'{order:03d}_{ticker}.md').write_text('\n'.join(packet),encoding='utf-8')
-    with (OUT/'packet_summary.csv').open('w',newline='',encoding='utf-8') as f:
+    with (OUT/'packet_summary_batch02.csv').open('w',newline='',encoding='utf-8') as f:
         w=csv.DictWriter(f,fieldnames=summary[0].keys()); w.writeheader(); w.writerows(summary)
     print(json.dumps({'packets':len(by),'filings':len(summary),'out':str(OUT)},indent=2))
 if __name__=='__main__':main()
