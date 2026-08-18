@@ -1,4 +1,4 @@
-name: H06 Blinded Outcome Candidate Harvest
+name: H06 Blinded Outcome Candidate Harvest Parallel
 on:
   pull_request:
     branches: [h06-runner-base]
@@ -6,17 +6,29 @@ permissions:
   contents: read
 jobs:
   harvest:
+    strategy:
+      fail-fast: false
+      matrix:
+        batch:
+          - {lo: 1, hi: 45, name: 001-045}
+          - {lo: 46, hi: 90, name: 046-090}
+          - {lo: 91, hi: 135, name: 091-135}
+          - {lo: 136, hi: 180, name: 136-180}
+          - {lo: 181, hi: 225, name: 181-225}
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
       - name: Build blinded candidate packets
-        run: python h06_temp/build_outcome_candidates.py
+        env:
+          MIN_ORDER: ${{ matrix.batch.lo }}
+          MAX_ORDER: ${{ matrix.batch.hi }}
+        run: python h06_temp/build_outcome_candidates_fast.py
       - name: Upload blinded candidate packets
         uses: actions/upload-artifact@v4
         with:
-          name: h06-outcome-candidates
-          path: h06_temp/outcome_audit
+          name: h06-outcome-candidates-${{ matrix.batch.name }}
+          path: h06_temp/outcome_audit_fast
           retention-days: 30
