@@ -1,4 +1,5 @@
 name: H06 Blind T0 Evidence Packets
+# trigger: 2026-08-18
 on:
   push:
     branches: [h06-manifest-verification-temp]
