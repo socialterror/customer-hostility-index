@@ -1,44 +1,38 @@
 name: H06 Manifest Verification
 
-# Corrected pre-T0 H06 universe reconstruction and exact filing freeze.
 on:
   push:
     branches: [h06-manifest-verification-temp]
     paths:
-      - 'h06_temp/verify_manifest.py'
-      - 'h06_temp/rebuild_and_freeze.py'
       - 'h06_temp/build_t0_packets.py'
-      - 'h06_temp/sample.csv.gz.b64'
       - '.github/workflows/h06-manifest-verify.yml'
-
 permissions:
   contents: write
-
 jobs:
-  verify:
+  packets:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Rebuild corrected pre-T0 universe and freeze exact manifest
-        id: rebuild
-        continue-on-error: true
-        run: python h06_temp/rebuild_and_freeze.py
-      - name: Build blind T0 evidence packets for first frozen sector
+      - name: Build blind T0 evidence packets
         id: packets
-        if: steps.rebuild.outcome == 'success'
         continue-on-error: true
-        run: python h06_temp/build_t0_packets.py
-      - name: Commit verification and T0 packet outputs to isolated branch
+        run: |
+          mkdir -p h06_temp/t0_packets
+          python h06_temp/build_t0_packets.py > h06_temp/t0_packets/build_stdout.txt 2> h06_temp/t0_packets/build_stderr.txt
+          rc=$?
+          echo "exit_code=$rc" > h06_temp/t0_packets/build_status.txt
+          exit $rc
+      - name: Commit T0 packet outputs and diagnostics
         if: always()
         run: |
-          git config user.name "h06-manifest-bot"
+          git config user.name "h06-t0-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add h06_temp/output h06_temp/t0_packets
-          git diff --cached --quiet || git commit -m "Generate first H06 blind T0 evidence packet batch"
+          git add h06_temp/t0_packets
+          git diff --cached --quiet || git commit -m "Persist H06 blind T0 packet batch and diagnostics"
           git push
-      - name: Enforce freeze and packet gates
-        if: steps.rebuild.outcome != 'success' || steps.packets.outcome != 'success'
+      - name: Enforce packet gate
+        if: steps.packets.outcome != 'success'
         run: exit 1
