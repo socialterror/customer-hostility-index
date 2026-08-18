@@ -14,12 +14,20 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: python h06_temp/freeze_final41_and_consolidate.py
-      - run: |
+      - name: Run fail-closed freeze and capture diagnostics
+        shell: bash
+        run: |
+          set +e
+          python h06_temp/freeze_final41_and_consolidate.py > h06_temp/final_t0_freeze_run.log 2>&1
+          code=$?
+          echo "EXIT_CODE=$code" >> h06_temp/final_t0_freeze_run.log
+          exit 0
+      - name: Commit outputs or diagnostics
+        run: |
           git config user.name "h06-t0-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add h06_temp/t0_scoring
-          git diff --cached --quiet || git commit -m "Freeze final H06 T0 predictors"
+          git add h06_temp/t0_scoring h06_temp/final_t0_freeze_run.log
+          git diff --cached --quiet || git commit -m "Run H06 final T0 freeze with diagnostics"
           git pull --rebase origin h06-manifest-verification-temp
           git push
-# trigger: 2026-08-18T15:28+02:00
+# diagnostic-trigger: 2026-08-18T15:28+02:00
