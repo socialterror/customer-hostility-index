@@ -25,8 +25,7 @@ for order in range(MIN_ORDER,MAX_ORDER+1):
  rows.append([order,ticker,fmt(f1),fmt(f5),fmt(mid)])
 with (OUT/'batch08_it_compact.tsv').open('w',newline='',encoding='utf-8') as f:
  w=csv.writer(f,delimiter='\t'); w.writerow(['order','ticker','F1_best','F5_best','mid_best']); w.writerows(rows)
-# split per company to avoid connector truncation
 sdir=OUT/'batch08_split'; sdir.mkdir(exist_ok=True)
 for r in rows:
  (sdir/f'{r[0]:03d}_{r[1]}.md').write_text(f'# {r[0]:03d} {r[1]}\n\n## F1\n{r[2]}\n\n## F5\n{r[3]}\n\n## MID\n{r[4]}\n',encoding='utf-8')
-print(len(rows))
+print('batch08',len(rows))
