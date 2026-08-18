@@ -1,0 +1,31 @@
+sample_order,sector,ticker,company_name,F5_class,F5_strength,H06_intensity_binary,semantic_acceleration,affected_actor,trajectory_rationale,batch_status
+127,industrials,IR,Ingersoll Rand,No Signal,N/A,LOW,NO,N/A,No qualifying customer-economic mechanism.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+128,industrials,PNR,Pentair,No Signal,N/A,LOW,NO,N/A,Discontinued-operations/accounting references are non-qualifying.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+129,industrials,XYL,Xylem Inc.,SP002,Strong,HIGH,NO,Industrial customers,Price realization repeatedly offsets cost inflation from F1 through F5; strong but static.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+130,industrials,CPRT,Copart,No Signal,N/A,LOW,NO,N/A,Repurchase-program discontinuation is non-customer.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+131,industrials,IEX,IDEX Corporation,No Signal,N/A,LOW,NO,N/A,No qualifying customer-economic mechanism.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+132,industrials,UNP,Union Pacific Corporation,SP004,Very Strong,HIGH,NO,Freight customers,Fuel surcharges explicitly recover fuel expense and core pricing gains are present from F1; very strong but pre-existing.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+133,industrials,LMT,Lockheed Martin,No Signal,N/A,LOW,NO,N/A,Risk-retirement/discontinued-operation references are non-qualifying.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+134,industrials,URI,United Rentals,No Signal,N/A,LOW,NO,N/A,Supplier material-cost risk and equipment-program discontinuation do not establish customer transfer or migration.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+135,industrials,INFO,IHS Markit,No Signal,N/A,LOW,NO,N/A,Discontinued-operations and tariff-risk language is non-qualifying.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+136,industrials,FBHS,Fortune Brands Home & Security,SP004,Very Strong,HIGH,NO,Plumbing/home-products customers,Price increases explicitly mitigate tariffs and cumulative raw-material cost increases from F1 onward; very strong but static.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+137,industrials,NLSN,Nielsen Holdings,No Signal,N/A,LOW,NO,N/A,No qualifying customer mechanism.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+138,industrials,EMR,Emerson Electric,SP002,Moderate,LOW,NO,Industrial customers,"Slightly higher price contributes to sales, but the trajectory lacks a strong or materially strengthening yield mechanism.",FROZEN_WITHIN_BATCH_PRE_OUTCOME
+139,industrials,FLS,Flowserve Corporation,No Signal,N/A,LOW,NO,N/A,Raw-material/tariff risk is described without a concrete customer-cost transfer.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+140,industrials,ALK,Alaska Air Group,No Signal,N/A,LOW,NO,N/A,"Wage and airport rate increases are operating costs, not customer pricing actions.",FROZEN_WITHIN_BATCH_PRE_OUTCOME
+141,industrials,ODFL,Old Dominion,SP004,Very Strong,HIGH,NO,LTL freight customers,"Yield management, base rates, accessorial charges and fuel surcharges explicitly offset cost inflation from F1; very strong but static.",FROZEN_WITHIN_BATCH_PRE_OUTCOME
+142,industrials,GWW,W. W. Grainger,SP004,Moderate,LOW,NO,Industrial/MRO customers,"Filings discuss attempting to pass cost increases through higher prices, but the evidence is risk-framed and not Strong implemented transfer.",FROZEN_WITHIN_BATCH_PRE_OUTCOME
+143,industrials,DD,DuPont,SP002,Strong,HIGH,NO,Industrial/materials customers,Local price increases contribute materially across regions/segments from F1 through F5; strong but static.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+144,industrials,CMI,Cummins,SP004,Moderate,LOW,NO,Engine/power customers,"Pricing actions are contractually available to pass material/commodity cost increases, but timing limitations keep the signal below Strong.",FROZEN_WITHIN_BATCH_PRE_OUTCOME
+145,industrials,TDG,TransDigm Group,No Signal,N/A,LOW,NO,N/A,Discontinued-operations language does not establish a qualifying customer mechanism.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+146,industrials,MAS,Masco,No Signal,N/A,LOW,NO,N/A,No qualifying customer-economic mechanism.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+147,industrials,WAB,Wabtec,No Signal,N/A,LOW,NO,N/A,"Rate references concern debt, not customers.",FROZEN_WITHIN_BATCH_PRE_OUTCOME
+148,industrials,J,Jacobs Solutions,No Signal,N/A,LOW,NO,N/A,Discontinued-operations/pension language is non-qualifying.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+149,industrials,DOV,Dover Corporation,SP004,Strong,HIGH,NO,Industrial customers,Pricing actions offset material costs and tariff exposure from the opening filings; strong but pre-existing.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+150,industrials,LHX,L3Harris,No Signal,N/A,LOW,NO,N/A,Interest-rate and repurchase references are non-customer.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+151,industrials,PH,Parker Hannifin,SP002,Moderate,LOW,NO,Industrial customers,"Prior-year pricing actions benefit margins, but F5 lacks a strong current pricing mechanism or acceleration.",FROZEN_WITHIN_BATCH_PRE_OUTCOME
+152,industrials,TXT,Textron,No Signal,N/A,LOW,NO,N/A,Inflation is described as an input to segment performance without customer transfer.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+153,industrials,NSC,Norfolk Southern,SP002,Strong,HIGH,NO,Rail freight customers,Pricing gains repeatedly raise average revenue per unit while fuel surcharges vary; strong established yield optimization.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+154,industrials,LDOS,Leidos,No Signal,N/A,LOW,NO,N/A,Share-repurchase language is non-customer.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+155,industrials,RSG,Republic Services,No Signal,N/A,LOW,NO,N/A,Interest-rate references are financing-related; no customer pricing mechanism established.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
+156,industrials,DAL,Delta Air Lines,No Signal,N/A,LOW,NO,N/A,Lounge/codeshare revenue and wage changes do not establish a qualifying customer-economic action.,FROZEN_WITHIN_BATCH_PRE_OUTCOME
