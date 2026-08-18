@@ -1,12 +1,12 @@
 name: H06 Manifest Verification
 
-# Isolated H06 manifest verification runner.
+# Corrected pre-T0 H06 universe reconstruction and exact filing freeze.
 on:
   push:
     branches: [h06-manifest-verification-temp]
     paths:
       - 'h06_temp/verify_manifest.py'
-      - 'h06_temp/find_financial_replacement.py'
+      - 'h06_temp/rebuild_and_freeze.py'
       - 'h06_temp/sample.csv.gz.b64'
       - '.github/workflows/h06-manifest-verify.yml'
 
@@ -21,21 +21,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Resolve preregistered same-sector replacement for FRC
-        id: replacement
+      - name: Rebuild corrected pre-T0 universe and freeze exact manifest
+        id: rebuild
         continue-on-error: true
-        run: python h06_temp/find_financial_replacement.py
-      - name: Verify exact H06 F1-F5 manifest
-        id: verifier
-        continue-on-error: true
-        run: python h06_temp/verify_manifest.py
+        run: python h06_temp/rebuild_and_freeze.py
       - name: Commit verification outputs to isolated branch
         if: always()
         run: |
           git config user.name "h06-manifest-bot"
           git config user.email "actions@users.noreply.github.com"
           git add h06_temp/output
-          git diff --cached --quiet || git commit -m "Generate H06 manifest verification outputs"
+          git diff --cached --quiet || git commit -m "Freeze corrected H06 exact SEC manifest"
           git push
       - name: Upload outputs
         if: always()
@@ -44,9 +40,6 @@ jobs:
           name: h06-manifest-verification
           path: h06_temp/output/*
           if-no-files-found: error
-      - name: Enforce replacement resolution
-        if: steps.replacement.outcome != 'success'
-        run: exit 1
       - name: Enforce freeze gate
-        if: steps.verifier.outcome != 'success'
+        if: steps.rebuild.outcome != 'success'
         run: exit 1
