@@ -22,3 +22,4 @@ jobs:
           git diff --cached --quiet || git commit -m "Freeze final H06 T0 predictors"
           git pull --rebase origin h06-manifest-verification-temp
           git push
+# trigger: 2026-08-18T15:28+02:00
