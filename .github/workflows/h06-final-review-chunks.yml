@@ -1,0 +1,24 @@
+name: H06 Final Review Chunks
+on:
+  push:
+    branches: [h06-manifest-verification-temp]
+    paths:
+      - 'h06_temp/chunk_final41_review.py'
+      - '.github/workflows/h06-final-review-chunks.yml'
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python h06_temp/chunk_final41_review.py
+      - run: |
+          git config user.name "h06-t0-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add h06_temp/t0_review/realestate_tail_review.md h06_temp/t0_review/utilities_review.md
+          git diff --cached --quiet || git commit -m "Build H06 final review chunks"
+          git pull --rebase origin h06-manifest-verification-temp
+          git push
