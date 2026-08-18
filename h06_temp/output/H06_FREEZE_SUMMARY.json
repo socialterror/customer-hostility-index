@@ -1,0 +1,38 @@
+{
+  "status": "FROZEN",
+  "historical_securities": 505,
+  "issuers": 500,
+  "prior_excluded": 65,
+  "technical_ineligible": 6,
+  "eligible": 429,
+  "companies": 225,
+  "filings": 1125,
+  "sector_counts": {
+    "communication_services": 17,
+    "consumer_discretionary": 50,
+    "consumer_staples": 30,
+    "energy": 21,
+    "financials": 68,
+    "health_care": 53,
+    "industrials": 58,
+    "information_technology": 54,
+    "materials": 24,
+    "real_estate": 31,
+    "utilities": 23
+  },
+  "sector_quotas": {
+    "communication_services": 9,
+    "consumer_discretionary": 26,
+    "consumer_staples": 16,
+    "energy": 11,
+    "financials": 36,
+    "health_care": 28,
+    "industrials": 30,
+    "information_technology": 28,
+    "materials": 13,
+    "real_estate": 16,
+    "utilities": 12
+  },
+  "sample_removed_n": 3,
+  "sample_added_n": 3
+}

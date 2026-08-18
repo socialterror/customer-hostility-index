@@ -1,0 +1,7 @@
+ticker,CIK,company_name,sector,exclusion_reason
+BLK,0002012383,BlackRock,financials,no eligible F5 in frozen window
+FRC,0001132979,First Republic Bank,financials,no eligible F5 in frozen window
+VTRS,0001792044,Viatris,health_care,only 3 preceding 10-Q/10-K filings
+CARR,0001783180,Carrier Global,industrials,only 2 preceding 10-Q/10-K filings
+OTIS,0001781335,Otis Worldwide,industrials,only 2 preceding 10-Q/10-K filings
+VNT,0001786842,Vontier,information_technology,only 0 preceding 10-Q/10-K filings
