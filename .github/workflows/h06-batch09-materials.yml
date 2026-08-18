@@ -27,3 +27,4 @@ jobs:
           git diff --cached --quiet || git commit -m "Generate H06 Materials blind evidence"
           git pull --rebase origin h06-manifest-verification-temp
           git push
+# triggered
