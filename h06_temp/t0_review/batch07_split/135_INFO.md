@@ -1,0 +1,10 @@
+# 135 INFO
+
+## F1
+F1 SP003 [4] (discontinue) | We evaluate segment operating performance at the Adjusted EBITDA level for each of our four segments. We define Adjusted EBITDA as net income before net interest, provision for income taxes, depreciation and amortization, stock-based compensation expense, restructuring charges, acquisition-related costs and performance compensation, exceptional litigation, net other gains and losses, pension mark-to-market and settlement expense, the impact of joint ventures and noncontrolling interests, and discontinued operations. Information about the operations of our four segments is set forth below (in millions).
+
+## F5
+F5 SP003 [4] (discontinue) | We evaluate segment operating performance at the Adjusted EBITDA level for each of our four segments. We define Adjusted EBITDA as net income before net interest, provision for income taxes, depreciation and amortization, stock-based compensation expense, restructuring charges, acquisition-related costs and performance compensation, exceptional litigation, net other gains and losses, pension mark-to-market and settlement expense, the impact of joint ventures and noncontrolling interests, and discontinued operations. Information about the operations of our four segments is set forth below (in millions).
+
+## MID
+F2 SP004 [5] (tariff,discontinue) | For example, the United States, the European Union, and other countries have imposed significant sanctions measures targeting the energy, defense, and financial sectors of Russia’s economy and specific Russian officials and businesses. There is also significant uncertainty about the future relationship between the United States and various other countries, most significantly China, with respect to trade policies, treaties, government regulations and tariffs. Although we believe all our business activities are permissible under all current applicable laws, rules, sanctions, embargoes, and regulations, we may be required to discontinue or limit our business activities in the future.
