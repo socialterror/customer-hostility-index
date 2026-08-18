@@ -16,12 +16,22 @@ def get_bytes(url):
 def clean(txt):
     txt=re.sub(r'(?is)<script.*?</script>|<style.*?</style>',' ',txt); txt=re.sub(r'(?is)<[^>]+>',' ',txt)
     txt=html.unescape(txt).replace('\xa0',' '); txt=re.sub(r'[ \t\r\f\v]+',' ',txt); txt=re.sub(r'\n\s*\n+','\n',txt); return txt
+def add_records(out,rec):
+    accs=rec.get('accessionNumber',[]); forms=rec.get('form',[]); docs=rec.get('primaryDocument',[])
+    for acc,form,doc in zip(accs,forms,docs):
+        if form in ('10-Q','10-K') and doc: out[acc]=doc
 def primary_map(cik):
     url=f'https://data.sec.gov/submissions/CIK{str(cik).zfill(10)}.json'
     data=json.loads(get_bytes(url).decode('utf-8'))
-    rec=data['filings']['recent']; out={}
-    for acc,form,doc in zip(rec['accessionNumber'],rec['form'],rec['primaryDocument']):
-        if form in ('10-Q','10-K'): out[acc]=doc
+    out={}; add_records(out,data['filings']['recent'])
+    # Older frozen accessions may have aged out of `recent`. SEC lists archived
+    # submissions JSON files under filings.files; load only metadata, never later
+    # company/news/outcome material.
+    for meta in data.get('filings',{}).get('files',[]):
+        name=meta.get('name')
+        if not name: continue
+        arch=json.loads(get_bytes('https://data.sec.gov/submissions/'+name).decode('utf-8'))
+        add_records(out,arch)
     return out
 def fetch_primary(cik,acc,doc):
     accdir=acc.replace('-',''); ciknum=str(int(cik))
@@ -53,7 +63,7 @@ def main():
         packet=[f'# H06 BLIND T0 EVIDENCE PACKET — {order:03d} {ticker}','','Only frozen F1–F5 SEC filings. No post-F5 content.','']
         for r in rs:
             acc=r['accession_number']; doc=pmap.get(acc)
-            if not doc: raise RuntimeError(f'{ticker} {acc}: primary document not in SEC recent submissions metadata')
+            if not doc: raise RuntimeError(f'{ticker} {acc}: primary document absent from SEC recent+archive submissions metadata')
             raw,url=fetch_primary(cik,acc,doc); txt=clean(raw); fams=passages(txt)
             packet += [f"## {r['filing_position']} | {r['form']} | {r['filing_date']} | {acc}",f'Primary document: {url}','']
             total=0
