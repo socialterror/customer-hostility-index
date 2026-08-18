@@ -18,7 +18,6 @@ def main():
     raw=urllib.request.urlopen(req,timeout=60).read().decode('utf-8-sig')
     rows=list(csv.DictReader(io.StringIO(raw)))
     active_rows=[r for r in rows if active(r) and r.get('cik','').strip()]
-    # one issuer/CIK, lexicographically smallest ticker; exactly as frozen addendum
     by={}
     for r in active_rows:
         cik=r['cik'].strip().zfill(10); sym=r['symbol'].strip()
@@ -31,17 +30,20 @@ def main():
     financials=[r for r in issuers if r['sector']=='financials']
     financials.sort(key=lambda r:rankkey(r['CIK']))
     got=[r['ticker'] for r in financials[:36]]
+    diag={'source_rows':len(rows),'active_security_rows':len(active_rows),'issuer_rows_before_prior_exclusion':len(by),
+          'eligible_issuers_after_prior_exclusion':len(issuers),'financial_eligible_n':len(financials),
+          'expected_top36':EXPECTED_TOP36,'reconstructed_top36':got,
+          'first_50':[{'rank':i+1,**r,'hash':rankkey(r['CIK'])} for i,r in enumerate(financials[:50])]}
+    (vm.OUT/'H06_FINANCIAL_RANKING_DIAGNOSTIC.json').write_text(json.dumps(diag,indent=2)+'\n')
     if got!=EXPECTED_TOP36:
-        raise RuntimeError('reconstructed financial ranking does not match frozen top-36; refusing replacement\nGOT='+str(got))
-    byidx,_=vm.build_index()
-    attempts=[]
+        raise RuntimeError('reconstructed financial ranking does not match frozen top-36; diagnostic committed; refusing replacement')
+    byidx,_=vm.build_index(); attempts=[]
     for rank,r in enumerate(financials[36:],start=37):
         five,err=vm.choose(byidx.get(r['CIK'],[]))
         attempts.append({'rank':rank,**r,'eligible':err is None,'reason':err or 'PASS'})
         if err is None:
             result={'status':'PASS','replacement_for':'FRC','replacement_rank':rank,**r,
-                    'filings':[{'position':f'F{i}','form':x['form'],'filing_date':x['filing_date'],'accession_number':x['accession_number'],'sec_locator':x['sec_locator']} for i,x in enumerate(five,1)],
-                    'attempts':attempts}
+                    'filings':[{'position':f'F{i}','form':x['form'],'filing_date':x['filing_date'],'accession_number':x['accession_number'],'sec_locator':x['sec_locator']} for i,x in enumerate(five,1)],'attempts':attempts}
             (vm.OUT/'H06_FRC_REPLACEMENT_RESULT.json').write_text(json.dumps(result,indent=2)+'\n')
             print(json.dumps(result,indent=2)); return
     raise RuntimeError('no valid same-sector replacement found')
