@@ -15,4 +15,4 @@ h=sum(x['H06_intensity_binary']=='HIGH' for x in company); ay=sum(x['semantic_ac
 n=OUT/'H06_T0_BATCH07_FREEZE_NOTE.md'; n.write_text(f'# H06 Blind T0 Scoring — Batch 07 Freeze Note\n\nSector: Industrials\nCompanies: {len(company)}\nFilings: {len(filings)}\nHigh: {h}\nLow: {len(company)-h}\nAcceleration YES: {ay}\nAcceleration NO: {len(company)-ay}\n\nNo post-F5 outcome information was inspected or used.\n')
 with (OUT/'H06_T0_BATCH07_CHECKSUMS.txt').open('w') as f:
  for p in (cp,fp,n): f.write(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n')
-print(status)
+print('batch07',status)
