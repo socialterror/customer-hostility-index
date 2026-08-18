@@ -1,4 +1,5 @@
 name: H06 Condense Blind T0 Packets
+# trigger batch03
 on:
   push:
     branches: [h06-manifest-verification-temp]
