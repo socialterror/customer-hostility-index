@@ -1,5 +1,6 @@
 name: H06 Manifest Verification
 
+# Trigger after workflow exists on isolated branch.
 on:
   push:
     branches: [h06-manifest-verification-temp]
