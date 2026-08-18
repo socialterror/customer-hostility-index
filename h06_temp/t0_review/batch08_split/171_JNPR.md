@@ -1,0 +1,10 @@
+# 171 JNPR
+
+## F1
+F1 SP001 [5] (consumption,portfolio) | Further, our intent is to expand our software business by introducing new software solutions to our product portfolio that simplify the operation of networks, and allow our customers across our key verticals flexibility in consumption and deployment. We believe our software and related services revenues as a percentage of total revenues will increase over time as we introduce new software solutions designed to better monetize the value of software functionality in our offerings. We believe the network needs for our customers in our Cloud, Service Provider, and Enterprise verticals are converging, as these customers recognize the need for high performance networks and are adopting cloud architectures for their infrastructure and service delivery, such as large public and private data centers and service provider edge data centers, for improved agility and greater levels of operating effic
+
+## F5
+F5 SP001 [8] (license,discontinue) | If we cannot protect our intellectual property rights, we could incur costly product redesign efforts, discontinue certain product offerings and experience other competitive harm. Unauthorized parties may also attempt to copy aspects of our products or obtain and use our proprietary information. We generally enter into confidentiality or license agreements with our employees, consultants, vendors, and customers, and generally limit access to and distribution of our proprietary information.
+
+## MID
+F2 SP001 [10] (subscription,subscriptions,license,licenses) | Our software offerings include subscriptions, SaaS, and perpetual licenses. We believe our software and related services revenues as 6 Table of Contents a percentage of total revenues will increase over time as we introduce new software solutions designed to better monetize the value of software functionality in our offerings. Significant Product Development Projects and Solutions In 2019 , we continued to execute on our product and solutions strategy and announced several new innovations, including metro, edge, and core innovations to accelerate Service Providers’ 5G transformation.

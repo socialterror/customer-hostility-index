@@ -1,0 +1,10 @@
+# 160 NLOK
+
+## F1
+F1 SP001 [8] (license,unauthorized use) | Our shrink-wrap license agreements are not signed by licensees and therefore may be unenforceable under the laws of some jurisdictions. Furthermore, the laws of some foreign countries do not offer the same level of protection of our proprietary rights as the laws of the U.S., and we may be subject to unauthorized use of our products in those countries. The unauthorized copying or use of our products or proprietary information could result in reduced sales of our products.
+
+## F5
+F5 SP003 [8] (license,discontinue) | We licensed Broadcom’s enterprise software, multiple security engines and related telemetry for 5.6 years, which will be amortized to continuing operations over the term of the license. In addition, we resolved all outstanding payments and certain claims related to the asset purchase and transition services agreements, which is included in discontinued operations. The following table presents information regarding certain components of incom e (loss) from discontinued operations, net of income taxes: Three Months Ended Six Months Ended (In millions) October 2, 2020 October 4, 2019 October 2, 2020 October 4, 2019 Net revenues $ — $ 576 $ — $ 1,173 Gross profit $ — $ 451 $ — $ 872 Operating income (loss) $ ( 133 ) $ 107 $ ( 175 ) $ 124 Income (loss) before income taxes $ ( 132 ) $ 108 $ ( 173 ) $ 124 Income tax benefit $ ( 30 ) $ ( 639 ) $ ( 40 ) $ ( 611 ) Income (loss) from discontinued o
+
+## MID
+F3 SP002 [10] (subscription,subscriptions,renewal,renewals) | We monitor APRU because it helps us understand the rate at which we are monetizing our consumer customer base. Annual retention rate is defined as the number of direct customers who have more than a one-year tenure as of the end of the most recently completed fiscal period divided by the total number of direct customers as of the end of the period from one year ago. We monitor annual retention rate to evaluate the effectiveness of our strategies to improve renewals of subscriptions.

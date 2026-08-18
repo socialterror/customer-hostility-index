@@ -1,0 +1,10 @@
+# 176 LRCX
+
+## F1
+F1 SP002 [5] (renewal,renewals) | The Company includes renewals and terminations in the calculation of the right-of-use asset and liability when the provision is reasonably certain to be exercised. The Company uses its incremental borrowing rate based on the information available at commencement date in determining the present value of future lease payments when the rate implicit in the lease is unknown. The Company has elected the following practical expedients and accounting policy elections for accounting under ASC 842: (i) leases with an initial lease term of 12 months or less are not recorded on the balance sheet; and (ii) lease and non-lease components of a contract are accounted for as a single lease component.
+
+## F5
+F5 SP001 [4] (discontinue) | As a result, the 2041 Notes were classified in current liabilities and a portion of the equity component, associated with the convertible notes representing the unamortized discount, was classified in temporary equity on the Company’s Condensed Consolidated Balance Sheets. Upon closure of the conversion period, the notes not converted will be reclassified back into noncurrent liabilities and the temporary equity will be reclassified into permanent equity. (2) This amount represents a cumulative fair market gain for discontinued hedging relationships, net of an immaterial amount of amortization as of the periods presented.
+
+## MID
+F2 SP001 [4] (discontinue) | As a result, the 2041 Notes were classified in current liabilities and a portion of the equity component, associated with the convertible notes representing the unamortized discount, was classified in temporary equity on the Company’s Consolidated Balance Sheets. Upon closure of the conversion period, the notes not converted will be reclassified back into noncurrent liabilities and the temporary equity will be reclassified into permanent equity. (2) This amount includes a cumulative fair market gain of $ 2.8 million for discontinued hedging relationships, net of an immaterial amount of amortization for the three and six months ended December 29, 2019 .
