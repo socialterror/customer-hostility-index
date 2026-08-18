@@ -9,4 +9,4 @@ lines=['# H06 Final 41 Blind Micro Review','', 'Retrieval-only evidence compress
 for r in rows:
  lines += [f"## {int(r['order']):03d} {r['ticker']}", f"F1: {clean(r['F1_best'])}", f"F5: {clean(r['F5_best'])}", f"MID: {clean(r['mid_best'])}",'']
 out.write_text('\n'.join(lines),encoding='utf-8')
-print(len(rows))
+print('micro',len(rows))
