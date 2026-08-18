@@ -1,3 +1,4 @@
+# trigger batch02 rerun 2026-08-18T13:48+02:00
 import csv,re,html,urllib.request,pathlib,time,json
 from collections import defaultdict
 ROOT=pathlib.Path(__file__).resolve().parent
