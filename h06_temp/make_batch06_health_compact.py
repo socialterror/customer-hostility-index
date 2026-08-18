@@ -16,7 +16,6 @@ for order in range(MIN_ORDER,MAX_ORDER+1):
             lo=line.lower(); matched=[x for x in PHRASES if x in lo]
             if matched:
                 score=sum(1 for x in matched if x in lo)
-                # prioritize concrete commercial phrases over generic inflation/portfolio noise
                 for x in ['price increase','pricing action','higher price','rate increase','list price','net price','pass through','pass-through','cost recovery','surcharge','discontinue','migration','migrate','premiumization']:
                     if x in lo: score += 3
                 hits.append((filing,fam,score,','.join(matched),line[2:]))
@@ -32,3 +31,4 @@ for order in range(MIN_ORDER,MAX_ORDER+1):
 with (OUT/'batch06_health_care_compact.tsv').open('w',newline='',encoding='utf-8') as f:
     w=csv.writer(f,delimiter='\t'); w.writerow(['order','ticker','F1_best','F5_best','mid_best']); w.writerows(rows)
 print(len(rows))
+# retrigger after workflow registration
