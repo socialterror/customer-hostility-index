@@ -1,0 +1,5 @@
+{
+  "packets": 26,
+  "filings": 130,
+  "out": "/home/runner/work/customer-hostility-index/customer-hostility-index/h06_temp/t0_packets"
+}
