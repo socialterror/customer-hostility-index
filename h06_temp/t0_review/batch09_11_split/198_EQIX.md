@@ -1,0 +1,10 @@
+# 198 EQIX
+
+## F1
+F1 SP003 [4] (discontinue) | 0001101239 us-gaap:DisposalGroupHeldforsaleNotDiscontinuedOperationsMember eqix:London10Paris8andotherEuropepropertiesandNewYork12Member
+
+## F5
+F5 SP001 [4] (migrate) | the nonreceipt of closing documents; or 4. for other reasons; • the possibility that there could be a delay in the completion of an acquisition, which could, among other things, result in additional transaction costs, loss of revenue or other negative effects resulting from uncertainty about completion of the respective acquisition; 71 Table of Content s • the dilution of our existing stockholders as a result of our issuing stock as consideration in a transaction or selling stock in order to fund the transaction; • the possibility of customer dissatisfaction if we are unable to achieve levels of quality and stability on par with past practices; • the possibility that we will be unable to retain relationships with key customers, landlords and/or suppliers of the acquired businesses, some of which may terminate their contracts with the acquired business as a result of the acquisition or which may attempt to negotiate changes in their current or future business relationships with us; • th
+
+## MID
+F2 SP002 [4] (price increase) | During the year ended December 31, 2019 , Americas cost of revenues increased by 3% ( 4% on a constant currency basis). The increase in our Americas cost of revenues was primarily due to: • $11.3 million of higher utilities costs driven by IBX data center expansions, increased utility usage and utility price increases; • $10.0 million of higher bandwidth costs in support of our business growth; • approximately $9.9 million of incremental cost of revenues from the Infomart Dallas acquisition; • $8.6 million of higher compensation costs, including salaries, bonuses, and stock-based compensation; and • $7.2 million of higher depreciation expense primarily due to IBX expansion activity. This increase was partially offset by: • $8.9 million of reduced property tax expenses, primarily due to accrual releases based on tax appeal settlements; and • $6.9 million of reduced office expenses.

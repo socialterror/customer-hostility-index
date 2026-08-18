@@ -1,0 +1,10 @@
+# 199 SBAC
+
+## F1
+F1 SP002 [4] (base rate) | Amounts borrowed under the Revolving Credit Facility accrue interest, at SBA Senior Finance II’s election, at either (1) the Eurodollar Rate plus a margin that ranges from 112.5 basis points to 175.0 basis points or (2) the Base Rate plus a margin that ranges from 12.5 basis points to 75.0 basis points, in each case based on the ratio of Consolidated Net Debt to Annualized Borrower EBITDA, calculated in accordance with the Senior Credit Agreement. In addition, SBA Senior Finance II is required to pay a commitment fee of between 0.20 % and 0.25 % per annum on the amount of unused commitment. If not earlier terminated by SBA Senior Finance II, the Revolving Credit Facility will terminate on, and SBA Senior Finance II will repay all amounts outstanding on or before, April 11, 2023 .
+
+## F5
+F5 SP004 [4] (pass through) | In Central America, we have similar rent escalators to that of leases in the United States and Canada while our leases in South America and South Africa escalate in accordance with a standard cost of living index. Site leases in South America typically provide for a fixed rental amount and a pass through charge for the underlying rent related to ground leases and other property interests. Cost of site leasing revenue primarily consists of:  Cash and non-cash rental expense on ground leases and other underlying property interests;  Property taxes;  Site maintenance and monitoring costs (exclusive of employee related costs);  Utilities;  Property insurance; and  Lease initial direct cost amortization.
+
+## MID
+F2 SP004 [5] (pass-through,tenant) | conditions that will govern the terms of the use of the site. Tenant leases in South America typically provide a pass-through charge for the underlying rent for property interests in addition to the base tenant rent. In our international markets, ground leases and other property interests are generally for an initial term of five to ten years with multiple renewal periods, which are at our option.
