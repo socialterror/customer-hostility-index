@@ -20,11 +20,19 @@ jobs:
           sed -i 's/packet_summary_batch02.csv/packet_summary_batch11.csv/' /tmp/b11.py
           sed -i "s#ROOT=pathlib.Path(__file__).resolve().parent#ROOT=pathlib.Path('$GITHUB_WORKSPACE/h06_temp')#" /tmp/b11.py
           python /tmp/b11.py
+      - name: Final blind T0 freeze
+        shell: bash
+        run: |
+          set +e
+          python h06_temp/freeze_final41_and_consolidate.py > h06_temp/final_t0_freeze_run.log 2>&1
+          code=$?
+          echo "EXIT_CODE=$code" >> h06_temp/final_t0_freeze_run.log
+          exit 0
       - run: |
           git config user.name "h06-t0-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add h06_temp/t0_packets h06_temp/t0_packets/packet_summary_batch11.csv
-          git diff --cached --quiet || git commit -m "Generate H06 Utilities blind evidence"
+          git add h06_temp/t0_packets h06_temp/t0_scoring h06_temp/final_t0_freeze_run.log
+          git diff --cached --quiet || git commit -m "Generate Utilities evidence and run final H06 T0 freeze"
           git pull --rebase origin h06-manifest-verification-temp
           git push
-# triggered
+# final-freeze-trigger
