@@ -1,4 +1,4 @@
-name: H06 Batch11 Utilities Blind Evidence
+name: H06 Final T0 Master Consolidation
 on:
   push:
     branches: [h06-manifest-verification-temp]
@@ -7,32 +7,31 @@ on:
 permissions:
   contents: write
 jobs:
-  build:
+  consolidate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.12'}
-      - run: |
-          cp h06_temp/build_t0_packets.py /tmp/b11.py
-          sed -i 's/MIN_ORDER=10/MIN_ORDER=214/' /tmp/b11.py
-          sed -i 's/MAX_ORDER=35/MAX_ORDER=225/' /tmp/b11.py
-          sed -i 's/packet_summary_batch02.csv/packet_summary_batch11.csv/' /tmp/b11.py
-          sed -i "s#ROOT=pathlib.Path(__file__).resolve().parent#ROOT=pathlib.Path('$GITHUB_WORKSPACE/h06_temp')#" /tmp/b11.py
-          python /tmp/b11.py
-      - name: Final blind T0 freeze
+      - name: Consolidate frozen H06 T0 ledgers
         shell: bash
         run: |
           set +e
-          python h06_temp/freeze_final41_and_consolidate.py > h06_temp/final_t0_freeze_run.log 2>&1
+          python h06_temp/consolidate_t0_master.py > h06_temp/t0_master_consolidation.log 2>&1
           code=$?
-          echo "EXIT_CODE=$code" >> h06_temp/final_t0_freeze_run.log
-          exit 0
-      - run: |
+          echo "EXIT_CODE=$code" >> h06_temp/t0_master_consolidation.log
+          test "$code" -eq 0
+      - name: Commit canonical T0 masters
+        run: |
           git config user.name "h06-t0-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add h06_temp/t0_packets h06_temp/t0_scoring h06_temp/final_t0_freeze_run.log
-          git diff --cached --quiet || git commit -m "Generate Utilities evidence and run final H06 T0 freeze"
+          git add h06_temp/t0_scoring/H06_T0_*_FROZEN.csv \
+                  h06_temp/t0_scoring/H06_T0_*_FROZEN.json \
+                  h06_temp/t0_scoring/H06_T0_FINAL_FREEZE_RECORD.md \
+                  h06_temp/t0_scoring/H06_T0_MASTER_CHECKSUMS.txt \
+                  h06_temp/t0_scoring/H06_T0_MASTER_FREEZE_STATUS.json \
+                  h06_temp/t0_master_consolidation.log
+          git diff --cached --quiet || git commit -m "Freeze canonical H06 T0 master ledgers"
           git pull --rebase origin h06-manifest-verification-temp
           git push
-# final-freeze-trigger
+# consolidate-trigger-20260818-1545
