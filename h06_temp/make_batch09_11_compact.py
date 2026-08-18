@@ -28,3 +28,4 @@ sdir=OUT/'batch09_11_split'; sdir.mkdir(exist_ok=True)
 for r in rows:
  (sdir/f'{r[0]:03d}_{r[1]}.md').write_text(f'# {r[0]:03d} {r[1]}\n\n## F1\n{r[2]}\n\n## F5\n{r[3]}\n\n## MID\n{r[4]}\n',encoding='utf-8')
 print('final-sectors',len(rows))
+# trigger
