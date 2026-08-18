@@ -52,3 +52,4 @@ checks=OUT/'H06_T0_BATCH06_CHECKSUMS.txt'
 with checks.open('w') as f:
     for p in (cp,fp,note): f.write(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n')
 print(status)
+# workflow registration retrigger
